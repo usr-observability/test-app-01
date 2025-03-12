@@ -1,0 +1,51 @@
+<h1>Ejemplo en C#</h1>
+ 
+<div *ngIf="csharpLanguage">
+    <a [href]="csharpLanguage.officialPage" target="_blank">Página oficial de C#</a>
+</div>
+
+<div>
+    <h2>Ejemplos básicos de C#</h2>
+    <textarea rows="10" cols="50">
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    namespace HelloWorld
+    {
+        class Program
+        {
+            static void Main(string[] args)
+            {
+                Console.WriteLine("Hello World!");
+            }
+        }
+    }
+    </textarea>
+    <h2>Ejemplo de llamada HTTPS con certificado en C#</h2>
+    <textarea rows="20" cols="50">
+    using System;
+    using System.Net.Http;
+    using System.Security.Cryptography.X509Certificates;
+    using System.Net.Security;
+    using System.Threading.Tasks;
+
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            var handler = new HttpClientHandler();
+            handler.ClientCertificates.Add(new X509Certificate2("path/to/your/certificate.pfx", "your_certificate_password"));
+            handler.ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
+
+            using (var client = new HttpClient(handler))
+            {
+                var response = await client.GetAsync("https://your-secure-api-endpoint");
+                var content = await response.Content.ReadAsStringAsync();
+                Console.WriteLine(content);
+            }
+        }
+    }
+    </textarea>

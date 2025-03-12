@@ -1,0 +1,23 @@
+<h1>Programming Languages</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Creador</th>
+      <th>Año</th>
+      <th>Casos de Uso</th>
+      <th>Foto</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let language of languages">
+      <td>{{ language.name }}</td>
+      <td>{{ language.creator }}</td>
+      <td>{{ language.year }}</td>
+      <td>{{ language.useCases }}</td>
+      <td><img [src]="language.imageUrl" alt="{{ language.name }}" /></td>
+      <td><button (click)="onButtonClick(language)">Acción</button></td>
+    </tr>
+  </tbody>
+</table>
